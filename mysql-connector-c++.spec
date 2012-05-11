@@ -16,7 +16,7 @@ Source0:	%{name}-bzr%{bzr}.tar.xz
 # Source0-md5:	f6db1d64152decb2bba483d1e29b3519
 Source1:	get-source.sh
 # Source0Download: http://dev.mysql.com/downloads/connector/cpp
-BuildRequires:	boost-devel
+BuildRequires:	boost-devel >= 1.34.0
 BuildRequires:	cmake
 BuildRequires:	libstdc++-devel
 BuildRequires:	mysql-devel
