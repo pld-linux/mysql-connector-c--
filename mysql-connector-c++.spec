@@ -7,27 +7,19 @@
 Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
 Version:	1.1.0
-%if 0%{?bzr}
 Release:	0.8.bzr%{?bzr}
-%else
-Release:	1
-%endif
 License:	GPLv2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
-%if 0%{?bzr}
 # bzr branch -r 895 lp:~mysql/mysql-connector-cpp/trunk mysql-connector-c++-1.1.0
 # less mysql-connector-c++-1.1.0/driver/mysql_metadata.cpp
 # check getDriverMajorVersion / getDriverMinorVersion / getDriverPatchVersion
 # tar czf mysql-connector-c++-bzr895.tgz --exclude .bzr mysql-connector-c++-1.1.0
 # rm -rf mysql-connector-c++-1.1.0
 Source0:	%{name}-bzr%{bzr}.tgz
-%else
-# Upstream has a mirror redirector for downloads, so the URL is hard to
-# represent statically.  You can get the tarball by following a link from
-# http://dev.mysql.com/downloads/connector/cpp
-Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{name}-%{version}.tar.gz
-%endif
+# Source0-md5:	ef824818419b8fb0f1396e37ce040d7a
+# Source0Download: http://dev.mysql.com/downloads/connector/cpp
+#Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{name}-%{version}.tar.gz
 BuildRequires:	boost-devel
 BuildRequires:	cmake
 BuildRequires:	mysql-devel
