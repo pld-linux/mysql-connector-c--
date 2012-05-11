@@ -17,10 +17,11 @@ Source0:	%{name}-bzr%{bzr}.tar.xz
 Source1:	get-source.sh
 # Source0Download: http://dev.mysql.com/downloads/connector/cpp
 BuildRequires:	boost-devel
-BuildRequires:	xz
 BuildRequires:	cmake
+BuildRequires:	libstdc++-devel
 BuildRequires:	mysql-devel
 BuildRequires:	sed >= 4.0
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
