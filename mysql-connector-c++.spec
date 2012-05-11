@@ -3,24 +3,21 @@
 %bcond_without	static_libs	# don't build static libraries
 %bcond_with		tests		# skip tests
 
-%define		bzr	895
+%define		bzr	916
 Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
 Version:	1.1.0
-Release:	0.8.bzr%{?bzr}
+Release:	0.bzr%{bzr}.1
 License:	GPLv2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
-# bzr branch -r 895 lp:~mysql/mysql-connector-cpp/trunk mysql-connector-c++-1.1.0
-# less mysql-connector-c++-1.1.0/driver/mysql_metadata.cpp
-# check getDriverMajorVersion / getDriverMinorVersion / getDriverPatchVersion
-# tar czf mysql-connector-c++-bzr895.tgz --exclude .bzr mysql-connector-c++-1.1.0
-# rm -rf mysql-connector-c++-1.1.0
-Source0:	%{name}-bzr%{bzr}.tgz
-# Source0-md5:	ef824818419b8fb0f1396e37ce040d7a
-# Source0Download: http://dev.mysql.com/downloads/connector/cpp
 #Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{name}-%{version}.tar.gz
+Source0:	%{name}-bzr%{bzr}.tar.xz
+# Source0-md5:	f6db1d64152decb2bba483d1e29b3519
+Source1:	get-source.sh
+# Source0Download: http://dev.mysql.com/downloads/connector/cpp
 BuildRequires:	boost-devel
+BuildRequires:	xz
 BuildRequires:	cmake
 BuildRequires:	mysql-devel
 BuildRequires:	sed >= 4.0
@@ -96,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a _doc_examples/examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-rm $RPM_BUILD_ROOT%{_prefix}/{COPYING,README}
+rm $RPM_BUILD_ROOT%{_prefix}/{COPYING,README,INSTALL}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -108,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ANNOUNCEMEN* COPYING README CHANGES
 %attr(755,root,root) %{_libdir}/libmysqlcppconn.so.*.*.*
-%ghost %{_libdir}/libmysqlcppconn.so.5
+%ghost %{_libdir}/libmysqlcppconn.so.6
 
 %files devel
 %defattr(644,root,root,755)
