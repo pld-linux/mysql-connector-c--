@@ -67,6 +67,10 @@ Statyczna biblioteka mysqlcppconn.
 %{__sed} -i -e 's/lib$/%{_lib}/' driver/CMakeLists.txt
 %{__chmod} -x examples/*.cpp examples/*.txt
 
+%if %{without tests}
+%{__sed} -i -e '/ADD_SUBDIRECTORY.*test/d' CMakeLists.txt
+%endif
+
 # Save examples to keep directory clean (for doc)
 %{__mkdir} _doc_examples
 %{__cp} -pr examples _doc_examples
