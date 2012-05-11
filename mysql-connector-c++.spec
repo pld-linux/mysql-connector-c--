@@ -8,7 +8,7 @@ Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
 Version:	1.1.0
 Release:	0.bzr%{bzr}.1
-License:	GPLv2 with exceptions
+License:	GPL v2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
 #Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{name}-%{version}.tar.gz
@@ -76,9 +76,10 @@ Statyczna biblioteka mysqlcppconn.
 %{__cp} -pr examples _doc_examples
 
 %build
+# MYSQLCLIENT_STATIC_BINDING controls whether libmysqlclient is linked or dlopened
 %cmake \
 	-DMYSQLCPPCONN_BUILD_EXAMPLES:BOOL=0 \
-	%{!?with_static_libs:-DMYSQLCLIENT_STATIC_BINDING:BOOL=0}
+	-DMYSQLCLIENT_STATIC_BINDING:BOOL=1
 %{__make}
 
 %if %{with tests}
