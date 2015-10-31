@@ -6,7 +6,7 @@
 Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
 Version:	1.1.1
-Release:	2
+Release:	3
 License:	GPL v2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
