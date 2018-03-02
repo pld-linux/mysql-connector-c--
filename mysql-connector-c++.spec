@@ -5,13 +5,13 @@
 
 Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
-Version:	1.1.1
-Release:	3
+Version:	1.1.9
+Release:	1
 License:	GPL v2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
 Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{name}-%{version}.tar.gz
-# Source0-md5:	3f3134ac39a5d56fdd360f2ad0121a99
+# Source0-md5:	f262bef7e70178f95ceb72a71f0915f7
 Source1:	get-source.sh
 # Source0Download: http://dev.mysql.com/downloads/connector/cpp
 BuildRequires:	boost-devel >= 1.34.0
@@ -96,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a _doc_examples/examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-rm $RPM_BUILD_ROOT%{_prefix}/{COPYING,README,INSTALL,ANNOUNCEMENT,Licenses_for_Third-Party_Components.txt}
+rm -f $RPM_BUILD_ROOT%{_prefix}/{COPYING,README,Licenses_for_Third-Party_Components.txt}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -106,15 +106,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ANNOUNCEMEN* COPYING README CHANGES Licenses_for_Third-Party_Components.txt
+%doc COPYING README Licenses_for_Third-Party_Components.txt
 %attr(755,root,root) %{_libdir}/libmysqlcppconn.so.*.*.*
-%ghost %{_libdir}/libmysqlcppconn.so.6
+%ghost %{_libdir}/libmysqlcppconn.so.7
 
 %files devel
 %defattr(644,root,root,755)
 %{_libdir}/libmysqlcppconn.so
 %{_includedir}/mysql_connection.h
 %{_includedir}/mysql_driver.h
+%{_includedir}/mysql_error.h
 %{_includedir}/cppconn
 %{_examplesdir}/%{name}-%{version}
 
