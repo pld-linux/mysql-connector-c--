@@ -6,7 +6,7 @@
 Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
 Version:	1.1.9
-Release:	1
+Release:	2
 License:	GPL v2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
@@ -14,10 +14,11 @@ Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{
 # Source0-md5:	f262bef7e70178f95ceb72a71f0915f7
 Source1:	get-source.sh
 # Source0Download: http://dev.mysql.com/downloads/connector/cpp
+BuildRequires:	/usr/bin/mysql_config
 BuildRequires:	boost-devel >= 1.34.0
 BuildRequires:	cmake >= 2.6.2
+BuildRequires:	libatomic-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	mysql-devel
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,7 +42,7 @@ The Connector/C++ preview features the following classes:
 Summary:	MySQL Connector/C++ developer files (headers, examples, etc.)
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	mysql-devel
+Requires:	/usr/bin/mysql_config
 
 %description devel
 These are the files needed to compile programs using MySQL
