@@ -6,7 +6,7 @@
 Summary:	MySQL database connector for C++
 Name:		mysql-connector-c++
 Version:	1.1.9
-Release:	3
+Release:	4
 License:	GPL v2 with exceptions
 Group:		Libraries
 URL:		http://forge.mysql.com/wiki/Connector_C++
@@ -14,6 +14,7 @@ Source0:	http://vesta.informatik.rwth-aachen.de/mysql/Downloads/Connector-C++/%{
 # Source0-md5:	f262bef7e70178f95ceb72a71f0915f7
 Source1:	get-source.sh
 # Source0Download: http://dev.mysql.com/downloads/connector/cpp
+Patch0:		cxx17.patch
 BuildRequires:	/usr/bin/mysql_config
 BuildRequires:	boost-devel >= 1.34.0
 BuildRequires:	cmake >= 2.6.2
@@ -62,6 +63,8 @@ Statyczna biblioteka mysqlcppconn.
 
 %prep
 %setup -q
+%patch0 -p1
+
 %{__sed} -i -e 's/lib$/%{_lib}/' driver/CMakeLists.txt
 %{__chmod} -x examples/*.cpp examples/*.txt
 
@@ -74,6 +77,7 @@ Statyczna biblioteka mysqlcppconn.
 %{__cp} -pr examples _doc_examples
 
 %build
+
 # MYSQLCLIENT_STATIC_BINDING controls whether libmysqlclient is linked or dlopened
 %cmake \
 	-DMYSQLCPPCONN_BUILD_EXAMPLES:BOOL=0 \
