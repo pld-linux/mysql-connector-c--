@@ -63,7 +63,7 @@ Statyczna biblioteka mysqlcppconn.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -i -e 's/lib$/%{_lib}/' driver/CMakeLists.txt
 %{__chmod} -x examples/*.cpp examples/*.txt
